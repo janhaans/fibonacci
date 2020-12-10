@@ -16,4 +16,4 @@ subscription = redis_client.pubsub()
 subscription.subscribe('message')
 
 for new_message in subscription.listen():
-    fib(new_message)
+    redis_client.hset('values', new_message, fib(new_message))
